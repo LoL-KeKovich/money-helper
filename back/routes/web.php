@@ -6,6 +6,16 @@ Route::get('/', function () {
     return 'lol';
 });
 
+Route::group([
+    'middleware' => 'web',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('login', 'App\Http\Controllers\AuthController@login');
+    Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+    Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+    Route::post('me', 'App\Http\Controllers\AuthController@me');
+});
+
 Route::get('/projects', 'App\Http\Controllers\ProjectController@index');
 Route::post('/projects', 'App\Http\Controllers\ProjectController@store');
 Route::put('/projects/{id}', 'App\Http\Controllers\ProjectController@update');
