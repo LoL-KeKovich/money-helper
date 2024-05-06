@@ -7,3 +7,6 @@ Route::get('/', function () {
 });
 
 Route::get('/projects', 'App\Http\Controllers\ProjectController@index');
+Route::post('/projects', 'App\Http\Controllers\ProjectController@store');
+Route::put('/projects/{id}', 'App\Http\Controllers\ProjectController@update');
+Route::delete('/projects/{id}', 'App\Http\Controllers\ProjectController@delete');
