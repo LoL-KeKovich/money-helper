@@ -16,6 +16,13 @@ Route::group([
     Route::post('me', 'App\Http\Controllers\AuthController@me');
 });
 
+Route::group([
+    'prefix' => 'user'
+], function () {
+    Route::post('create', 'App\Http\Controllers\UserController@store');
+    Route::put('update', 'App\Http\Controllers\UserController@update');
+});
+
 Route::get('/projects', 'App\Http\Controllers\ProjectController@index');
 Route::post('/projects', 'App\Http\Controllers\ProjectController@store');
 Route::put('/projects/{id}', 'App\Http\Controllers\ProjectController@update');
