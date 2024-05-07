@@ -1,0 +1,26 @@
+.list-wrapper {
+    background: url("../Main/app-background.jpg");
+    height: 100vh;
+    border-style: solid;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 10px;
+}
+.projects {
+    margin-top: 35px;
+}
+.project_link {
+    margin-top: 30px;
+    color: white;
+    background: grey;
+    height: 45px;
+    font-size: large;
+    text-decoration: none;
+    border-color: darkkhaki;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 5px;
+    border-left: none;
+    border-right: none;
+    padding: 5px;
+}
