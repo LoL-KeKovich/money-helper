@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, PATCH, DELETE');
+header('Access-Control-Allow-Credentials', 'true');
+header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With, Authorization');
+
 Route::get('/', function () {
     return 'lol';
 });
