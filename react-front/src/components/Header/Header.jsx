@@ -6,6 +6,7 @@ import Projects from "../Pages/Projects/Projects";
 import CreateProject from "../Pages/Projects/CreateProject";
 import Reset from "../Pages/Reset/Reset";
 import DonateProjects from "../Pages/Projects/DonateProjects";
+import Edit from "../Pages/Projects/Edit/Edit";
 export default function Header() {
     return(
         <header>
@@ -33,6 +34,7 @@ export default function Header() {
                     <Route path="/projects/create" element={<CreateProject/>}/>
                     <Route path="/projects/all" element={<DonateProjects/>}/>
                     <Route path="/reset" element={<Reset/>}/>
+                    <Route path="/projetcs/edit" element={<Edit/>}/>
                 </Routes>
             </div>
         </header>

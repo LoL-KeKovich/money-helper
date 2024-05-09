@@ -4,6 +4,9 @@ import {useEffect, useState} from "react";
 import axios from 'axios';
 export default function Projects() {
 
+    const navigate = useNavigate();
+    const [projectData, setProjectData] = useState([]);
+
     useEffect(() => {
         if(localStorage.getItem('token') == null) {
             navigate("/login");
@@ -16,9 +19,6 @@ export default function Projects() {
         }
     }, [])
 
-    const navigate = useNavigate();
-
-    const [projectData, setProjectData] = useState([]);
     return(
         <>
             <div className='list-wrapper'>
@@ -31,12 +31,20 @@ export default function Projects() {
                         {projectData.map((data)=> {
                             return (
                                 <>
-                                    <div className='projects'>
-                                        <div className='project-description'><p>Описание проекта: {data.description}</p></div>
-                                        <div className='project-author'><p>Автор проекта: {data.author}</p></div>
-                                        <div className='project-status'><p>Статус сбора средств: {data.current_status}</p></div>
-                                        <div className='project-need'><p>Необходимая сумма: {data.needed_sum}</p></div>
-                                        <div className='project-current'><p>Текущая сумма: {data.current_sum}</p></div>
+                                    <div className='project-items-wrapper'>
+                                        <div className='project-top'><p>Проект</p></div>
+                                        <div className='projects-card'>
+                                            <div className='project-description'><p>Описание проекта: {data.description}</p></div>
+                                            <div className='project-author'><p>Автор проекта: {data.author}</p></div>
+                                            <div className='progress-bar'>
+                                                <p>Прогресс сбора</p>
+                                                <progress className="graph" value={data.current_sum} max={data.needed_sum}></progress>
+                                            </div>
+                                            <div className='project-status'><p>Статус сбора средств: {data.current_status}</p></div>
+                                            <div className='project-button'>
+                                                <button>Редактировать проект</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </>
                             )
