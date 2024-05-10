@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import axios from 'axios';
 export default function Projects() {
 
+    let current_status = "Нет";
+
     const navigate = useNavigate();
     const [projectData, setProjectData] = useState([]);
 
@@ -14,7 +16,6 @@ export default function Projects() {
             axios.get(`http://127.0.0.1:8000/projects`, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
                 .then((response) => {
                     setProjectData(response.data);
-                    console.log(projectData);
             })
         }
     }, [])
@@ -29,6 +30,7 @@ export default function Projects() {
                     </div>
                     <div className='project-items'>
                         {projectData.map((data)=> {
+                            {current_status = data.current_status == 0 ? "Сбор продолжается" : "Сбор закрыт"}
                             return (
                                 <>
                                     <div className='project-items-wrapper'>
@@ -40,7 +42,10 @@ export default function Projects() {
                                                 <p>Прогресс сбора</p>
                                                 <progress className="graph" value={data.current_sum} max={data.needed_sum}></progress>
                                             </div>
-                                            <div className='project-status'><p>Статус сбора средств: {data.current_status}</p></div>
+                                            <div className='project-picture'>
+
+                                            </div>
+                                            <div className='project-status'><p>Статус сбора средств: {current_status}</p></div>
                                             <div className='project-button'>
                                                 <button>Редактировать проект</button>
                                             </div>

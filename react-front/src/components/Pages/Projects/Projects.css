@@ -71,7 +71,7 @@
 }
 .projects-card {
     margin-top: 15px;
-    height: 200px;
+    height: 250px;
     width: 300px;
     background: grey;
     display: flex;
@@ -110,6 +110,26 @@ progress {
     transition: 1s;
 }
 .project-button button:hover {
+    scale: 1.3;
+    color: lightblue;
+    font-weight: bold;
+}
+.project-button-donate {
+    margin-left: 33%;
+    margin-top: 15px;
+    color: #0B2349;
+    font-weight: bold;
+    background: orange;
+    border-style: solid;
+    border-color: #a69fd6;
+    width: 100px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.project-button-donate .project_link_donate {
+    text-decoration: none;
+}
+.project-button-donate:hover {
     scale: 1.3;
     color: lightblue;
     font-weight: bold;

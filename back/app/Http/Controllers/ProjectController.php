@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
     public $token;
@@ -26,7 +27,17 @@ class ProjectController extends Controller
         }
     }
 
+    public function getAll() {
+        $projects = Project::all();
+        return(json_encode($projects));
+    }
+
     public function store(Request $request) {
+        $request->validate([
+            'author' => 'required',
+            'needed_sum' => 'required',
+            'description' => 'required',
+        ]);
         Project::create($request->all());
         return(json_encode('created'));
     }
@@ -39,6 +50,14 @@ class ProjectController extends Controller
         } else {
             return(json_encode('Not permitted'));
         }
+    }
+
+    public function donate(Request $request, $id) {
+        $project = Project::find($id);
+        $request->merge([
+            'current_sum' => $request->current_sum + $project->current_sum,
+        ]);
+        $project->update($request->all());
     }
 
     public function delete($id) {
