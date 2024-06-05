@@ -62,7 +62,8 @@ class ProjectController extends Controller
 
     public function delete($id) {
         $project = Project::find($id);
-        if(($this->user['role'] == 'admin' || $this->user['email'] == $project['author']) && isset($this->token)) {
+        if(($this->user['role'] == 'admin' || $this->user['email']
+                == $project['author']) && isset($this->token)) {
             Project::destroy($id);
             return(json_encode('deleted'));
         } else {
