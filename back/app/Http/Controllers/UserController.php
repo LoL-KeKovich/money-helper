@@ -29,6 +29,9 @@ class UserController extends Controller
             'role'=>'prohibited',
         ]);
         $user = User::find($id);
+        $request->merge([
+            'password' => Hash::make($request->password),
+        ]);
         $user->update($request->all());
         return(json_encode('changed password'));
     }
