@@ -21,14 +21,14 @@ class UserController extends Controller
         return(json_encode('created user'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $pass) {
         $request->validate([
             'password'=>'required',
             'email'=>'prohibited',
             'initials'=>'prohibited',
             'role'=>'prohibited',
         ]);
-        $user = User::find($id);
+        $user = User::find($pass);
         $request->merge([
             'password' => Hash::make($request->password),
         ]);
